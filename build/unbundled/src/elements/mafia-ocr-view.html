@@ -1,0 +1,10 @@
+<html><head></head><body><dom-module id="mafia-ocr-view">
+    <style type="text/css"></style>
+  <template>
+    <div id="heroContent">
+    </div>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"mafia-ocr-view",behaviors:[HeroBehavior],properties:{actionObject:{type:Object}},on:function(t){t.scanResult&&(this.actionObject=t.scanResult),"银行卡"===t.type&&(this.actionObject.value={bankCode:"888888888888888"},API.out(this.actionObject)),"身份证反面"===t.type&&(this.actionObject.value={code:"美国华盛顿特区",valid:"2999-10-19"},API.out(this.actionObject)),"身份证正面"===t.type&&(this.actionObject.value={name:"奥巴马",code:0x455655cea0b1000+(new Date).getTime()+"",address:"美国华盛顿特区白宫"},API.out(this.actionObject)),"身份证"===t.type&&(this.actionObject.value={name:"奥巴马",code:0x455655cea0b1000+(new Date).getTime()+"",address:"美国华盛顿特区白宫"},API.out(this.actionObject),this.actionObject.value={code:"美国华盛顿特区",valid:"2999-10-19"},API.out(this.actionObject)),"敏识"===t.type&&(this.actionObject.value={minshi:!0},API.out(this.actionObject))}});</script>
+</body></html>

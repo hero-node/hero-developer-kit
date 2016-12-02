@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head>
+
+  <title>core-iconset-svg</title>
+  <script src="../webcomponentsjs/webcomponents.js"></script>
+  <link rel="import" href="svg-sample-icons.html">
+  <style shim-shadowdom="">.embiggen core-icon{height:128px;width:128px;}core-icon:nth-of-type(1){fill:orange;}core-icon:nth-of-type(2){fill:green;stroke:orange;}core-icon:nth-of-type(3){fill:navy;}core-icon{transition:all 0.5s;-webkit-transition:all 0.5s;}core-icon:hover{-webkit-filter:drop-shadow( 2px 2px 2px #333 );filter:drop-shadow( 2px 2px 2px #333 );}</style>
+</head>
+<body unresolved="">
+
+  <template is="auto-binding">
+    <div class="embiggen">
+      <template repeat="{{icon in icons}}">
+        <core-icon icon="{{icon}}"></core-icon>
+      </template>
+    </div>
+    <core-meta id="meta" type="iconset"></core-meta>
+  </template>
+  <script>addEventListener("template-bound",function(n){var e=n.target,t="svg-sample-icons",a=e.$.meta.byId(t).iconNames;e.icons=a.map(function(n){return t+":"+n})});</script>
+
+
+</body></html>

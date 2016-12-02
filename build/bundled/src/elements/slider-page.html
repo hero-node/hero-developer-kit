@@ -1,0 +1,25 @@
+<html><head><link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="bower_components/neon-animation/neon-animatable.html">
+<link rel="import" href="bower_components/neon-animation/neon-animations.html">
+
+</head><body><dom-module id="pic-frame">
+  <link rel="stylesheet" href="slide-page.css">
+  <style>div{display:inline-block;background-color:#eee;border-radius:8px;padding:4px;}</style>
+  <template>
+      <div class="right" layout="" vertical="" center="" end-justified=""><span>Powered by Polymer</span><paper-shadow z="5"></paper-shadow></div>
+    <core-animated-pages id="pages" transitions="slide-from-right" selected="{{pageIndex}}">
+      <content></content>
+    </core-animated-pages>
+    <section class="nav" layout="" horizontal="" end-justified="">
+      <div layout="" horizontal=""><paper-fab start-justified="" icon="icons:arrow-back" id="preBtn" on-click="{{prePage}}"><paper-shadow z="5"></paper-shadow></paper-fab></div>
+      <div layout="" horizontal=""><paper-fab icon="icons:arrow-forward" id="nextBtn" on-click="{{nextPage}}"><paper-shadow z="5"></paper-shadow></paper-fab></div>
+    </section>
+  </template>
+</dom-module>
+
+<script>Polymer("slide-page",{pageIndex:0,pageMax:0,ready:function(){this.tabIndex=0,this.pageMax=this.children.length-1,this.$.pages.focus(),this.pageIndex=parseInt(window.location.hash.replace("#","")||0),this.toggleBtns(),console.log(this.pageMax)},keypressHandler:function(e,t,n){var i=e.keyCode,a=[37],s=[32,39];s.indexOf(i)!=-1?this.nextPage():a.indexOf(i)!=-1&&this.prePage()},prePage:function(){this.pageIndex-=1,this.pageIndex<=0&&(this.pageIndex=0),window.location.hash=this.pageIndex,this.toggleBtns()},nextPage:function(){this.pageIndex+=1,this.pageIndex>=this.pageMax&&(this.pageIndex=this.pageMax),window.location.hash=this.pageIndex,this.toggleBtns()},toggleBtns:function(){this.pageIndex>=this.pageMax?this.$.nextBtn.hidden=!0:this.$.nextBtn.removeAttribute("hidden"),this.pageIndex<=0?this.$.preBtn.hidden=!0:this.$.preBtn.removeAttribute("hidden")}});</script>
+
+
+</body></html>

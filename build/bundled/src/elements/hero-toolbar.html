@@ -1,0 +1,19 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="hero-behavior.html">
+<link rel="import" href="hero-button.html">
+
+</head><body><dom-module id="hero-toolbar">
+    <style type="text/css">div{display:inline-block;position:absolute;overflow:hidden;left:0px;top:0px;width:100%;height:44px;background:#303e53;}#title{display:inline-block;color:#cccccc;width:100%;line-height:44px;text-align:center;}</style>
+  <template>
+    <div id="heroContent">
+        <hero-button json="{{left}}" id="left"></hero-button>
+        <span id="title">{{title}}</span>
+        <hero-button json="{{right}}" id="right"></hero-button>
+    </div>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"hero-toolbar",behaviors:[HeroBehavior],properties:{title:{type:String},right:{type:String},left:{type:String}},on:function(t){if(t.title&&(this.title=t.title),t.backgroundColor&&(this.$.heroContent.style.background="#"+t.backgroundColor),t.right){var i=t.right;i.tinyColor="999999",i.frame={r:"10",y:"5",w:"88",h:"34",p:{w:window.innerWidth,h:window.innerHeight}},this.right=i}if(t.left){var r=t.left;r.tinyColor="999999",r.frame={x:"10",y:"5",w:"66",h:"34",p:{w:window.innerWidth,h:window.innerHeight}},this.left=r}}});</script>
+</body></html>

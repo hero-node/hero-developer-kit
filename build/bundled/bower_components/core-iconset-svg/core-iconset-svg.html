@@ -1,0 +1,8 @@
+<html><head><link rel="import" href="../core-iconset/core-iconset.html">
+
+</head><body><polymer-element name="core-iconset-svg" extends="core-meta" attributes="iconSize">
+
+  <script>Polymer("core-iconset-svg",{iconSize:24,type:"iconset",created:function(){this._icons={}},ready:function(){this["super"](),this.updateIcons()},iconById:function(e){return this._icons[e]||(this._icons[e]=this.querySelector('[id="'+e+'"]'))},cloneIcon:function(e){var t=this.iconById(e);if(t){var i=t.cloneNode(!0);i.removeAttribute("id");var n=document.createElementNS("http://www.w3.org/2000/svg","svg");return n.setAttribute("viewBox","0 0 "+this.iconSize+" "+this.iconSize),n.style.pointerEvents="none",n.appendChild(i),n}},get iconNames(){return this._iconNames||(this._iconNames=this.findIconNames()),this._iconNames},findIconNames:function(){var e=this.querySelectorAll("[id]").array();if(e.length)return e.map(function(e){return e.id})},applyIcon:function(e,t){var i=e,n=i.querySelector("svg");n&&n.remove();var o=this.cloneIcon(t);if(o)return o.setAttribute("height","100%"),o.setAttribute("width","100%"),o.setAttribute("preserveAspectRatio","xMidYMid meet"),o.style.display="block",i.insertBefore(o,i.firstElementChild),o},updateIcons:function(e,t){e=e||"[icon]",t=t||"updateIcon";for(var i,n=window.ShadowDOMPolyfill?"":"html /deep/ ",o=document.querySelectorAll(n+e),r=0;i=o[r];r++)i[t]&&i[t].call(i)}});</script>
+
+</polymer-element>
+</body></html>

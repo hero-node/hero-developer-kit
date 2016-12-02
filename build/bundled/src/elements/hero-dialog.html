@@ -1,0 +1,10 @@
+<html><head></head><body><dom-module id="hero-dialog">
+  <style type="text/css"></style>
+  <template>
+    <paper-dialog id="dialog">
+
+    </paper-dialog>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"hero-dialog",behaviors:[HeroBehavior],properties:{text:{type:String},contentView:{type:Object}},on:function(e){if(e.str){var t=JSON.parse(e.str);this.contentView=document.createElement(APP.camelCase2bar(t["class"]||t.res)),this.contentView.setJson?(this.$.dialog.appendChild(this.contentView),this.contentView.controller=this.controller,this.contentView.json=t):console.log(t["class"]||t.res);var o=this;setTimeout(function(){var e=o.contentView.$.heroContent;e&&(o.$.dialog.style.width=e.style.width,o.$.dialog.style.height=e.style.height),o.$.dialog.open()},200)}},ready:function(){}});</script></body></html>

@@ -1,0 +1,12 @@
+<html><head></head><body><dom-module id="hero-table-view-section">
+    <style type="text/css">:focus{outline:none;}#heroContent{margin:0px;padding:0px;background-color:#fff;border-bottom:1px solid #ddd;border-top:1px solid #ddd;}p{display:block;font-size:12px;color:#999;height:20px;margin:2px;margin-left:15px;margin-top:22px;}</style>
+  <template>
+    <p id="title">{{title}}</p>
+    <div id="heroContent">
+        <div style="margin-left:15px" id="item" json="{{item}}" hidden="true"></div>
+    </div>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"hero-table-view-section",behaviors:[HeroBehavior],properties:{datasource:{type:Object},item:{type:Array},title:{type:String}},on:function(e){if(e.sectionTitle&&(this.title=e.sectionTitle),e.rows){for(;this.$.heroContent.lastChild;)this.$.heroContent.removeChild(this.$.heroContent.lastChild);for(var t=0;t<e.rows.length;t++){var o,n=e.rows[t];n["class"]||n.res?(o=document.createElement(APP.camelCase2bar(n["class"]||n.res)),o.controller=this.controller,this.$.heroContent.appendChild(o),o.json=n,o.tabIndex=t+""):(o=document.createElement("hero-table-view-cell"),o.controller=this.controller,this.$.heroContent.appendChild(o),o.json=n,o.tabIndex=t+"",this.$.heroContent.appendChild(o)),n.height?o.$.heroContent.style.height=n.height+"px":o.$.heroContent.style.height="44px",t!=e.rows.length-1&&(o.$.heroContent.style.borderBottom="1px solid #ddd"),this.$.heroContent.appendChild(o)}}},selectItem:function(e){var t=e.srcElement.json;t.action&&this.controller.out(t.action)}});</script>
+</body></html>

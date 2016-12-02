@@ -1,0 +1,21 @@
+<html><head></head><body><dom-module id="mafia-loan-table-cell">
+    <style type="text/css">#heroContent{display:block;height:163px;width:100%;overflow:hidden;position:relative;background-color:#F3F1F2;}#background{display:block;position:absolute;top:12px;bottom:0px;width:100%;background-color:#fff;border-top:1px solid #ddd;border-bottom:1px solid #ddd;}p{position:absolute;display:inline-block;pointer-events:none;}#title{left:15px;top:0px;width:160px;height:30px;font-size:22px;color:#37455c;}#des{left:15px;top:43px;font-size:12px;color:#999999;}#flag1{padding-left:4px;padding-right:4px;right:75px;top:14px;font-size:12px;color:#00bc8d;background-color:#f2fffd;border-radius:3px;}#flag2{padding-left:4px;padding-right:4px;right:15px;top:14px;font-size:12px;color:#ff5500;background-color:#FFEEEE;border-radius:3px;}#div{right:15px;left:15px;top:68px;height:1px;border-top:1px dashed #e4e4e4;}#price{left:15px;top:58px;width:160px;height:30px;font-size:33px;color:#37455C;}#priceDesc{left:15px;top:128px;width:160px;height:30px;font-size:12px;color:#999999;}#mount{left:50%;top:58px;width:160px;height:30px;font-size:33px;color:#37455C;}#mountDesc{left:50%;top:128px;width:160px;height:30px;font-size:12px;color:#999999;}#next{right:15px;top:128px;height:20px;font-size:12px;color:#999999;}</style>
+  <template>
+    <div id="heroContent">
+      <paper-button id="background" on-tap="onTap"></paper-button>
+      <p id="title"></p>
+      <p id="des"></p>
+      <p id="flag1">零抵押</p>
+      <p id="flag2">1天放款</p>
+      <p id="div"></p>
+      <p id="price"></p>
+      <p id="priceDesc">最低年化利率</p>
+      <p id="mount"></p>
+      <p id="mountDesc">最高借款总额</p>
+      <p id="next"> 详情 &gt;</p>
+    </div>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"mafia-loan-table-cell",behaviors:[HeroBehavior],properties:{items:{type:Object}},onTap:function(){this.controller.on(this.json)},on:function(e){this.$.title.innerHTML=e.name,this.$.des.innerHTML=e.des,this.$.price.innerHTML=e.price,this.$.mount.innerHTML=e.topValue,this.$.flag1.style.display=e.flag1?"inline-block":"none",this.$.flag2.style.display=e.flag2?"inline-block":"none"}});</script>
+</body></html>

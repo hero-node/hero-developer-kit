@@ -1,0 +1,13 @@
+<html><head></head><body><dom-module id="hero-alert">
+  <style type="text/css">.buttons{display:block !important;text-align:center;padding-left:8px;}</style>
+  <template>
+    <paper-dialog id="alert" modal="" role="alertdialog">
+      <p id="text"></p>
+      <div class="buttons">
+        <paper-button dialog-confirm="" on-tap="tapOk">{{btOk}}</paper-button>
+      </div>
+    </paper-dialog>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"hero-alert",behaviors:[HeroBehavior],properties:{btOk:{type:String}},ready:function(){var t="确定",e=navigator.language.toLowerCase();"en-us"===e&&(t="ok"),this.btOk=t},on:function(t){if(t.text){this.$.text.innerText=t.text;var e=this;setTimeout(function(){e.open()},50)}},open:function(){this.$.alert.open()},close:function(){this.$.alert.close()},tapOk:function(){this.close()}});</script></body></html>

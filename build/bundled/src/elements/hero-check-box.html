@@ -1,0 +1,11 @@
+<html><head></head><body><dom-module id="hero-check-box">
+    <style type="text/css">div{display:inline-block;position:absolute;}paper-checkbox{display:inline-block;position:absolute;margin:0px;padding:0px;width:18px;height:18px;}</style>
+  <template>
+    <div id="heroContent">
+      <paper-checkbox id="checkbox" on-tap="onTap" checked="{{checked}}"></paper-checkbox>
+    </div>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"hero-check-box",behaviors:[HeroBehavior],properties:{checked:{type:Boolean}},on:function(e){e.checked&&(this.checked=e.checked),e.frame&&(this.$.checkbox.style.left=parseInt(this.$.heroContent.style.width)/2-9+"px",this.$.checkbox.style.top=parseInt(this.$.heroContent.style.height)/2-9+"px")},ready:function(){},onTap:function(){if(this.json.click){var e=this.json.click;e.value=this.checked,this.controller.on(e)}}});</script>
+</body></html>

@@ -1,0 +1,11 @@
+<html><head></head><body><dom-module id="hero-label">
+    <style type="text/css">div{display:block;position:absolute;overflow:hidden;pointer-events:none;}#text{display:block;}</style>
+  <template>
+    <div id="heroContent">
+      <span id="text"></span>
+    </div>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"hero-label",behaviors:[HeroBehavior],on:function(t){if(void 0!==t.text&&(this.$.text.innerHTML=t.text,t.hasOwnProperty("numberOfLines")||(this.$.text.style.lineHeight=this.$.heroContent.style.height)),t.size&&(this.$.text.style.fontSize=t.size+"px"),t.alignment&&(this.$.text.style.textAlign=t.alignment),t.textColor&&(this.$.text.style.color=APP.str2Color(t.textColor)),t.font&&(this.$.text.style.fontWeight=t.font),t.attribute){this.$.text.style.display="none";for(var e=[],i=0;i<t.text.length;i++){var s=document.createElement("span");s.innerHTML=t.text[i],s.style.display="inline",e.push(s)}for(var l in t.attribute){if("color("==l.substring(0,6))for(var r=l.replace("color(",""),r=r.replace(")",""),n=parseInt(r.split(",")[0]),o=parseInt(r.split(",")[1]),i=n;i<o+n;i++)e[i].style.color=APP.str2Color(t.attribute[l]);if("middleline("==l.substring(0,11))for(var r=l.replace("middleline(",""),r=r.replace(")",""),n=parseInt(r.split(",")[0]),o=parseInt(r.split(",")[1]),i=n;i<o+n;i++)e[i].style.textDecoration="line-through";if("size("==l.substring(0,5))for(var r=l.replace("size(",""),r=r.replace(")",""),n=parseInt(r.split(",")[0]),o=parseInt(r.split(",")[1]),i=n;i<o+n;i++)e[i].style.fontSize=t.attribute[l]+"px";if("gap"==l.substring(0,3))for(var i=0;i<e.length;i++)e[i].style.lineHeight=t.attribute[l]+"px"}var a=document.createElement("p");for(a.style.display="block",a.style.margin="0px",a.style.color=this.$.text.style.color,a.style.fontSize=this.$.text.style.fontSize,a.style.textAlign=this.$.text.style.textAlign;this.$.heroContent.lastChild;)this.$.heroContent.removeChild(this.$.heroContent.lastChild);this.$.heroContent.appendChild(a);for(var i=0;i<e.length;i++)a.appendChild(e[i])}t.attributedText&&(this.$.text.innerHTML=t.attributedText),t.hAuto&&this.async(function(){this.oon({frame:{x:parseFloat(this.$.heroContent.style.left)+"",y:parseFloat(this.$.heroContent.style.top)+"",w:parseFloat(this.$.heroContent.style.width)+"",h:parseFloat(this.$.heroContent.style.height)+60+""}})},100)}});</script>
+</body></html>

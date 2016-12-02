@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head>
+
+  <title>core-iconset</title>
+
+  <script src="../webcomponentsjs/webcomponents.js"></script>
+  <link rel="import" href="core-iconset.html">
+  <link rel="import" href="../core-icon/core-icon.html">
+
+</head>
+<body unresolved="">
+  
+  
+  <core-iconset id="my-icons" src="my-icons.png" width="96" iconsize="24" icons="location place starta stopb bus car train walk">
+  </core-iconset>
+
+  <core-iconset id="my-icons-big" src="my-icons-big.png" width="192" iconsize="48" icons="location place starta stopb bus car train walk">
+  </core-iconset>
+
+  
+  <core-icon icon="my-icons:location"></core-icon>
+  <core-icon icon="my-icons:place"></core-icon>
+  <core-icon icon="my-icons:starta"></core-icon>
+  <core-icon icon="my-icons:stopb"></core-icon>
+  <core-icon icon="my-icons:bus"></core-icon>
+  <core-icon icon="my-icons:car"></core-icon>
+  <core-icon icon="my-icons:train"></core-icon>
+  <core-icon icon="my-icons:walk"></core-icon>
+  <br>
+  
+  <style>.embiggen core-icon{width:48px;height:48px;}</style>
+
+  <div class="embiggen">
+    <core-icon icon="my-icons-big:0"></core-icon>
+    <core-icon icon="my-icons-big:1"></core-icon>
+    <core-icon icon="my-icons-big:2"></core-icon>
+    <core-icon icon="my-icons-big:3"></core-icon>
+    <core-icon icon="my-icons-big:4"></core-icon>
+    <core-icon icon="my-icons-big:5"></core-icon>
+    <core-icon icon="my-icons-big:6"></core-icon>
+    <core-icon icon="my-icons-big:7"></core-icon>
+  </div>
+
+ 
+
+</body></html>

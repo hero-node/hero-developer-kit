@@ -1,0 +1,11 @@
+<html><head></head><body><dom-module id="hero-loading">
+  <style type="text/css">paper-spinner{position:fixed;left:50%;top:50%;background-color: 'F00',
+     -webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}div{position:absolute;width:0px;height:0px;background-color:'#f00';}</style>
+  <template>
+    <div id="heroContent">
+      <paper-spinner id="loading" active=""></paper-spinner>
+    </div>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"hero-loading",behaviors:[HeroBehavior],on:function(o){"boolean"==typeof o.show&&(this.$.loading.active=o.show,this.$.heroContent.style.visibility=o.show?"visible":"hidden")}});</script></body></html>

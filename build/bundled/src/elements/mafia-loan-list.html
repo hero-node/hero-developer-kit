@@ -1,0 +1,36 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animatable.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animations.html">
+
+ <link rel="import" href="hero-behavior.html">
+ <link rel="import" href="hero-button.html">
+ <link rel="import" href="hero-image-view.html">
+
+</head><body><dom-module id="mafia-loan-list">
+    <style type="text/css">neon-animated-pages{display:inline-block;position:absolute;overflow:hidden;margin:0px;padding:0px;width:100%;height:100%;}div{display:inline-block;position:absolute;overflow:hidden;margin:0px;padding:0px;width:100%;height:100%;border:0px;}#next{display:inline-block;position:absolute;top:85%;right:10%;width:40%;background-color:#fff;text-align:center;}#pre{display:inline-block;position:absolute;top:85%;left:10%;width:40%;background-color:#fff;text-align:center;}#background{display:inline-block;position:absolute;height:80%;left:10%;top:5%;width:80%;background-color:#fff;border-radius:8px;}img{position:absolute;overflow:hidden;top:20px;width:120px;height:120px;left:50%;transform:translate(-50%);-webkit-transform:translate(-50%);}h3{position:absolute;overflow:hidden;top:140px;width:100%;text-align:center;}span{display:inline-block;position:absolute;overflow:hidden;top:188px;width:100%;text-align:center;color:#666;}#desc{position:absolute;top:40%;left:10%;width:85%;}.small img{width:100px;height:100px;}.small h3{top:110px;}.small #desc{top:45%;}.small p{margin:5px auto;}</style>
+  <template>
+    <div id="heroContent">
+    <neon-animated-pages id="pages">
+      <template is="dom-repeat" items="{{data}}">
+        <div>
+          <div id="background">
+            <img src="../images/gxd.png">
+            <h3>{{item.name}}</h3>
+            <div id="desc">
+              <p>{{item.desc0}}</p>
+              <p>{{item.desc1}}</p>
+              <p>{{item.desc2}}</p>
+              <p>{{item.desc3}}</p>
+            </div>
+            <hero-button on-tap="detail" json="{cornerRadius:'6',title:'产品详情',backgroundColor:'238934',size:'20',titleColor:'ffffff',frame:{x:'0.1x',b:'0.25x',w:'0.6x',h:'44'}}"></hero-button>
+          </div>
+        </div>
+      </template>
+    </neon-animated-pages>
+    </div>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"mafia-loan-list",behaviors:[HeroBehavior],properties:{data:{type:Array}},ready:function(){var e=window.innerHeight;e<=480&&(this.$.heroContent.className+=" small");var t,a,i,n,s,o,r,d=10,h=this,c=document.getElementById("pages");c.addEventListener("touchstart",function(e){r=e.changedTouches[0],t=r.pageX,a=r.pageY,e.preventDefault()},!1),c.addEventListener("touchmove",function(e){e.preventDefault()},!1),c.addEventListener("touchend",function(e){r=e.changedTouches[0],i=r.pageX,n=r.pageY,s=i-t,o=n-a,Math.abs(s)>d&&(s<0?h.next():h.pre()),e.preventDefault()},!1),setTimeout(function(){h.$.pages.selected=0})},on:function(e){e.data&&(this.data=e.data)},pre:function(){this.$.pages.entryAnimation="slide-from-left-animation",this.$.pages.exitAnimation="slide-right-animation",this.$.pages.selectPrevious()},next:function(){this.$.pages.entryAnimation="slide-from-right-animation",this.$.pages.exitAnimation="slide-left-animation",this.$.pages.selectNext()},detail:function(){API.out(this.data[this.$.pages.selected])}});</script>
+</body></html>

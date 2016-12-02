@@ -1,0 +1,6 @@
+<html><head><link rel="import" href="../polymer/polymer.html">
+
+</head><body><polymer-element name="core-meta" attributes="label type" hidden="">
+<script>!function(){var t="meta",e={},r={};Polymer("core-meta",{type:"default",alwaysPrepare:!0,ready:function(){this.register(this.id)},get metaArray(){var t=this.type;return r[t]||(r[t]=[]),r[t]},get metaData(){var t=this.type;return e[t]||(e[t]={}),e[t]},register:function(e,r){e&&e!==t&&(this.unregister(this,r),this.metaData[e]=this,this.metaArray.push(this))},unregister:function(t,e){delete this.metaData[e||t.id];var r=this.metaArray.indexOf(t);r>=0&&this.metaArray.splice(r,1)},get list(){return this.metaArray},byId:function(t){return this.metaData[t]}})}();</script>
+</polymer-element>
+</body></html>

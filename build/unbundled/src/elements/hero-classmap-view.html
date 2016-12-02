@@ -1,0 +1,12 @@
+<html><head></head><body><dom-module id="hero-classmap-view">
+    <style type="text/css">div{display:inline-block;position:absolute;overflow:hidden;}</style>
+  <template>
+    <div id="heroContent">
+    <template is="dom-repeat" items="{{classes}}">
+      <hero-label json="item"></hero-label>
+    </template>
+    </div>
+  </template>
+</dom-module>
+<script>Polymer({is:"hero-classmap-view",behaviors:[HeroBehavior],properties:{classes:{type:Object}},on:function(e){for(var r in e){var o=e[r];o.frame={w:"88",h:"44"},o.cornnerRadius=22,o.borderWidth=1,o.borderColor="ee3333",o.center={x:.5+(r%2===0?.001:-.001)+"x",y:.5-(r%2===0?.001:-.001)+"x"}}this.classes=e}});</script>
+</body></html>

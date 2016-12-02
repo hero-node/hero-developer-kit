@@ -1,0 +1,14 @@
+<html><head></head><body><dom-module id="hero-confirm">
+  <style type="text/css">.buttons{display:block !important;text-align:center;padding-left:8px;}</style>
+  <template>
+    <paper-dialog id="confirm" modal="" role="alertdialog">
+      <p id="text"></p>
+      <div class="buttons">
+        <paper-button on-tap="tapOk">{{btOk}}</paper-button>
+        <paper-button on-tap="tapCancel">{{btCancel}}</paper-button>
+      </div>
+    </paper-dialog>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"hero-confirm",behaviors:[HeroBehavior],properties:{},ready:function(){var t="确定",o="取消",n=navigator.language.toLowerCase();"en-us"===n&&(t="ok",o="Cancel"),this.btOk=t,this.btCancel=o},on:function(t){if(t.text){this.$.text.innerText=t.text;var o=this;setTimeout(function(){o.open()},50)}t.action&&(this.action=t.action)},open:function(){this.$.confirm.open()},close:function(){this.$.confirm.close()},tapOk:function(){this.close(),API.out(this.action)},tapCancel:function(){this.close()}});</script></body></html>

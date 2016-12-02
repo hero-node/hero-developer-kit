@@ -1,0 +1,12 @@
+<html><head></head><body><dom-module id="dr-table-view">
+    <style type="text/css">div{display:inline-block;position:absolute;overflow:auto;padding:0px;padding-top:15px;background-color:#f4f4f4;}</style>
+  <template>
+    <div id="heroContent">
+      <template is="dom-repeat" items="{{items}}">
+        <hero-table-view-section json="{{item}}"></hero-table-view-section>
+      </template>
+    </div>
+  </template>
+</dom-module>
+<script>Polymer({is:"dr-table-view",behaviors:[HeroBehavior],properties:{items:{type:Object}},on:function(e){if(e.data){if(this.items=e.data,e.footer){var t=e.footer,o=document.createElement(API.camelCase2bar(t["class"]||t.res));o.$.heroContent.style.position="relative",this.$.heroContent.appendChild(o),o.controller=this.controller,o.json=t}if(e.header){var t=e.header,o=document.createElement(API.camelCase2bar(t["class"]||t.res));o.$.heroContent.style.position="relative",this.$.heroContent.insertBefore(o,this.$.heroContent.children[0]),o.controller=this.controller,o.json=t}var r=this;this.async(function(){for(var e=0;e<r.$.heroContent.children.length;e++)r.$.heroContent.children[e].controller=r.controller},100)}}});</script>
+</body></html>

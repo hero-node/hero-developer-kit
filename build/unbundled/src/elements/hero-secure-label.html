@@ -1,0 +1,11 @@
+<html><head></head><body><dom-module id="hero-secure-label">
+    <style type="text/css">div{display:block;position:absolute;overflow:hidden;}span{display:block;}</style>
+  <template>
+    <div id="heroContent">
+      <span id="text">{{text}}</span>
+    </div>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"hero-secure-label",behaviors:[HeroBehavior],properties:{text:{type:String}},on:function(t){if(t.text&&(this.text=t.text,t.numberOfLines||(this.$.text.style.lineHeight=this.$.heroContent.style.height)),t.phone){var e=t.phone,i=e.substring(4,4);e=e.replace(i,"****"),this.text=e,this.$.text.style.lineHeight=this.$.heroContent.style.height}if(t.personId){var s=t.personId,i=s.substring(5,12);s=s.replace(i,"************"),this.text=s,this.$.text.style.lineHeight=this.$.heroContent.style.height}if(t.bankCard){var h=t.bankCard,i=h.substring(0,h.length-4);h=h.replace(i,"****"),this.text=h,this.$.text.style.lineHeight=this.$.heroContent.style.height}t.size&&(this.$.text.style.fontSize=t.size+"px"),t.alignment&&(this.$.text.style.textAlign=t.alignment),t.textColor&&(this.$.text.style.color="#"+t.textColor)}});</script>
+</body></html>

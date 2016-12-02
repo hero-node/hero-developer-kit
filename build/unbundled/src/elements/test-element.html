@@ -1,0 +1,12 @@
+<html><head><link rel="import" href="bower_components/polymer/polymer.html">
+</head><body><dom-module id="test-element">
+  <template>
+    
+     <b>{{owner}}</b>
+	<button on-click="clicked">Kick Me</button>
+
+  </template>
+</dom-module>
+
+<script>Polymer({is:"test-element",properties:{owner:{type:String,value:"Daniel"}},ready:function(){this.owner="I'm a proto-element. Check out my prototype!"},regularTap:function(e){alert("Thank you for tapping")},specialTap:function(e){alert("It was special tapping")},handleClick:function(){alert("Ow!")}});</script>
+</body></html>

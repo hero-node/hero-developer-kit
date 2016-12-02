@@ -1,0 +1,15 @@
+<html><head></head><body><dom-module id="hero-picker-view">
+  <link rel="stylesheet" type="text/css" href="pickerviewbase/anypicker-font.css">
+  <link rel="stylesheet" type="text/css" href="pickerviewbase/anypicker.css">
+  <link rel="stylesheet" type="text/css" href="pickerviewbase/anypicker-ios.css">
+  <style type="text/css">#heroContent{visibility:hidden;}</style>
+  <template>
+    <div id="heroContent">
+      <paper-input type="text" id="picker" value="{{value}}"></paper-input>
+    </div>
+  </template>
+</dom-module>
+
+<script src="pickerviewbase/jquery-1.11.1.min.js"></script>
+<script src="pickerviewbase/anypicker.js"></script>
+<script>function isUndefined(e){return void 0===e||"undefined"===e}Polymer({is:"hero-picker-view",behaviors:[HeroBehavior],properties:{selectAction:{type:Object},value:{type:String,observer:"valueChange"}},getPosition:function(e){if(e&&this.arr.one===!0)return{section:0,row:this.arr.indexOf(e)};var t,n,i=e.split(/\s+/),o=i[0],a=i[1];if(isUndefined(o))t=0;else for(var r=0,s=this.arr.length;r<s;r++)if(this.arr[r].title===o){t=r;break}if(isUndefined(a))n=0;else for(var l=this.arr[t],c=0,h=l.rows.length;c<h;c++)if(l.rows[c]===a){n=c;break}return{section:t,row:n}},valueChange:function(e){e&&(this.arr?this.selectAction.value=this.getPosition(e):this.selectAction.value=e,API.out(this.selectAction))},on:function(e){function t(e){for(var t=[],n=s[e.val].rows,i=0,o=n.length;i<o;i++)t.push({label:n[i],val:i});return t}function n(e,n,i,o){if(0===e){var a=i.values[0];this.setting.dataSource[1].data=t(a),this.reloadComponent(1,!0)}}var i={header:[],contentTop:[],contentBottom:[],footer:["cancelButton","setButton"]},o=$(this.$.picker),a=navigator.language.toLowerCase();if("zh-cn"===a)var r={setButton:"设置",cancelButton:"取消",shortMonths:"1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月".split("_"),fullMonths:"一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月".split("_")};if(e.selectAction&&(this.selectAction=e.selectAction),"show"===e.method&&o.triggerHandler("focus"),"date"===e.type&&o.AnyPicker({mode:"datetime",dateTimeFormat:"MMMM d, yyyy",theme:"iOS",layout:"fixed",viewSections:i,i18n:r}),e.datas){var s=this.arr=e.datas;if(Array.isArray(s)&&s.length>0)if("string"==typeof s[0]){this.arr.one=!0;for(var l=[],c=[{component:0,name:"0",label:"0"}],h=[{component:0,data:l}],d=0,f=s.length;d<f;d++)l.push({label:s[d],val:d});o.AnyPicker({mode:"select",layout:"fixed",viewSections:i,components:c,dataSource:h,theme:"iOS",i18n:r})}else if("object"==typeof s[0]){for(var u=[],d=0,f=s.length;d<f;d++)u.push({label:s[d].title,val:d});var c=[{component:0,name:"0",label:"0",width:"50%",textAlign:"center"},{component:1,name:"1",label:"1",width:"50%",textAlign:"center"}],h=[{component:0,data:u},{component:1,data:t(u[0])}];o.AnyPicker({mode:"select",layout:"fixed",viewSections:i,components:c,dataSource:h,onChange:n,theme:"iOS",i18n:r})}}},ready:function(){}});</script></body></html>

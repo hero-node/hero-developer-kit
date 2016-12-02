@@ -1,0 +1,9 @@
+<html><head><link rel="import" href="../core-iconset/core-iconset.html">
+
+<link rel="stylesheet" href="core-icon.css" shim-shadowdom="">
+
+</head><body><polymer-element name="core-icon" attributes="src icon alt">
+<script>!function(){var t;Polymer("core-icon",{src:"",icon:"",alt:null,observe:{icon:"updateIcon",alt:"updateAlt"},defaultIconset:"icons",ready:function(){return t||(t=document.createElement("core-iconset")),this.hasAttribute("aria-label")?void(this.hasAttribute("role")||this.setAttribute("role","img")):void this.updateAlt()},srcChanged:function(){var t=this._icon||document.createElement("div");t.textContent="",t.setAttribute("fit",""),t.style.backgroundImage="url("+this.src+")",t.style.backgroundPosition="center",t.style.backgroundSize="100%",t.parentNode||this.appendChild(t),this._icon=t},getIconset:function(i){return t.byId(i||this.defaultIconset)},updateIcon:function(t,i){if(!this.icon)return void this.updateAlt();var e=String(this.icon).split(":"),r=e.pop();if(r){var s=this.getIconset(e.pop());s&&(this._icon=s.applyIcon(this,r),this._icon&&this._icon.setAttribute("fit",""))}t&&t.split(":").pop()==this.getAttribute("aria-label")&&this.updateAlt()},updateAlt:function(){this.getAttribute("aria-hidden")||(""===this.alt?(this.setAttribute("aria-hidden","true"),this.hasAttribute("role")&&this.removeAttribute("role"),this.hasAttribute("aria-label")&&this.removeAttribute("aria-label")):(this.setAttribute("aria-label",this.alt||this.icon.split(":").pop()),this.hasAttribute("role")||this.setAttribute("role","img"),this.hasAttribute("aria-hidden")&&this.removeAttribute("aria-hidden")))}})}();</script>
+
+</polymer-element>
+</body></html>

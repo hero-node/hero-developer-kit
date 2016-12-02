@@ -1,0 +1,15 @@
+<html><head></head><body><dom-module id="mafia-loan-table">
+    <style type="text/css">#heroContent{position:absolute;width:100%;height:100%;margin:0px;padding:0px;display:block;overflow:auto;}#headImg{height:160px;width:100%;overflow:visible;}</style>
+  <template>
+    <div id="heroContent">
+      <div id="headImg"></div>
+      <template is="dom-repeat" items="{{items}}">
+        <mafia-loan-table-cell json="{{item}}"></mafia-loan-table-cell>
+      </template>
+      <p> </p>
+    </div>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"mafia-loan-table",behaviors:[HeroBehavior],properties:{items:{type:Array}},on:function(e){if(e.heads&&(this.$.headImg.style.backgroundImage="url("+e.heads[0].url+")",this.$.headImg.style.backgroundPosition="bottom center",this.$.headImg.style.backgroundSize="cover"),e.data){this.items=e.data[0].rows;var t=this;this.async(function(){for(var e=0;e<t.$.heroContent.children.length;e++)t.$.heroContent.children[e].controller=t.controller},100)}}});</script>
+</body></html>

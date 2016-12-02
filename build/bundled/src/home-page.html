@@ -1,0 +1,41 @@
+<html><head></head><body><dom-module id="home-page">
+  <template>
+    <style>:host{@apply (--layout-horizontal);@apply (--layout-center-center);}.circle{display:inline-block;position:relative;box-sizing:border-box;overflow:hidden;width:100px;height:100px;margin:0px;margin-left:32px;margin-right:32px;border-radius:50%;background-size:cover;}.item:nth-child(1) :first-child{background-image:url(../images/one.png);}.item:nth-child(2) :first-child{background-image:url(../images/two.png);}.item:nth-child(3) :first-child{background-image:url(../images/three.png);}.item:nth-child(4) :first-child{background-image:url(../images/four.png);}.item:nth-child(5) :first-child{background-image:url(../images/five.png);}.item{display:inline-block;position:relative;box-sizing:border-box;overflow:hidden;}p{text-align:center;height:20px;font-size:23px;font-family:'Roboto', 'Noto', sans-serif;line-height:1.5;color:#aaa;}app-header{position:fixed;height:60px;top:0;left:0;width:100%;color:#fff;background-color:rgba(255, 255, 255, 0.02);--app-header-background-front-layer:{background-image:url(//app-layout-assets.appspot.com/assets/PharrellWilliams.jpg);};}#canvas{position:absolute;left:0px;margin:0px;padding:0px;width:100%;height:100%;}#hero_pic{position:absolute;left:0px;margin:0px;padding:0px;width:100%;height:100%;opacity:0.1;background-size:cover;}</style>
+    <canvas id="canvas"></canvas>
+    <div id="hero_pic"></div>
+
+    <app-header effects="waterfall resize-title blend-background parallax-background" condenses="" reveals="">
+      <app-toolbar id="title">
+        <div condensed-title="">Hero Mobile</div>
+        <paper-icon-button icon="info" on-tap="info"></paper-icon-button>
+      </app-toolbar>
+    </app-header>
+
+
+    <div id="contentBk">
+      <div class="item">
+        <paper-material class="circle" on-tap="onClick" heroname="guide"></paper-material>
+        <p>Concept</p>
+      </div>
+      <div class="item">
+        <paper-material class="circle" on-tap="onClick" heroname="code"></paper-material>
+        <p>Coding</p>
+      </div>
+      <div class="item">
+        <paper-material class="circle" on-tap="onClick" heroname="doc"></paper-material>
+        <p>Doc</p>
+      </div>
+      <div class="item">
+        <paper-material class="circle" on-tap="onClick" heroname="about"></paper-material>
+        <p>About</p>
+      </div>
+      <div class="item">
+        <paper-material class="circle" on-tap="onClickDemo" heroname="demo"></paper-material>
+        <p>Demo</p>
+      </div>
+    </div>
+  </template>
+
+</dom-module>
+<script>Polymer({is:"home-page",behaviors:[HeroBehavior,Polymer.NeonSharedElementAnimatableBehavior],properties:{animationConfig:{value:function(){var i=Polymer.dom(this.root).querySelectorAll(".circle"),t=Array.prototype.slice.call(i);return{entry:[{name:"cascaded-animation",animation:"scale-up-animation",nodes:t},{name:"cascaded-animation",animation:"fade-in-animation",nodes:this.$.title.children}],exit:[{name:"hero-animation",id:"hero1",fromPage:this},{name:"cascaded-animation",animation:"scale-down-animation",nodes:t}]}}}},onClick:function(){var i=event.target;this.sharedElements={hero1:i},this.fire("item-click",i.attributes.heroname.value)},onClickDemo:function(){window.open("/sample/hero_mobile.html")},info:function(){},ready:function(){this.run(),this.$.hero_pic.style.backgroundImage="url(../images/hero_3.jpg)"},run:function(){function i(){"use strict";function i(i,t){if(arguments.length<2&&(t=i,i=0),i>t){var a=t;t=i,i=a}return Math.floor(Math.random()*(t-i+1))+i}function n(i,t){var a=Math.max(i,t),e=Math.round(Math.sqrt(a*a+a*a));return e/2}function r(){h.globalCompositeOperation="source-over",h.globalAlpha=.5,h.fillStyle="hsla("+m+", 64%, 6%, 2)",h.fillRect(0,0,l,d),h.globalCompositeOperation="lighter";for(var i=1,e=a.length;i<e;i++)a[i].draw();t=window.requestAnimationFrame(r)}var s=o.$.canvas,h=s.getContext("2d"),l=s.width=window.innerWidth,d=s.height=window.innerHeight,m=217,c=300;a=[],e=0;var u=document.createElement("canvas"),p=u.getContext("2d");u.width=100,u.height=100;var f=u.width/2,g=p.createRadialGradient(f,f,0,f,f,f);g.addColorStop(.025,"#CCC"),g.addColorStop(.1,"hsl("+m+", 11%, 63%)"),g.addColorStop(.25,"hsl("+m+", 64%, 6%)"),g.addColorStop(1,"transparent"),p.fillStyle=g,p.beginPath(),p.arc(f,f,f,0,2*Math.PI),p.fill();var v=function(){this.orbitRadius=i(n(l,d)),this.radius=i(60,this.orbitRadius)/10,this.orbitX=l/2,this.orbitY=d/2,this.timePassed=i(0,c),this.speed=i(this.orbitRadius)/5e4,this.alpha=i(2,10)/20,e++,a[e]=this};v.prototype.draw=function(){var t=Math.sin(this.timePassed)*this.orbitRadius+this.orbitX,a=Math.cos(this.timePassed)*this.orbitRadius+this.orbitY,e=i(10);1===e&&this.alpha>0?this.alpha-=.05:2===e&&this.alpha<1&&(this.alpha+=.05),h.globalAlpha=this.alpha,h.drawImage(u,t-this.radius/2,a-this.radius/2,this.radius,this.radius),this.timePassed+=this.speed},setTimeout(function(){e=0;for(var i=0;i<c;i++)new v},100),r()}var t,a=[],e=0,o=this;i()}});</script>
+</body></html>

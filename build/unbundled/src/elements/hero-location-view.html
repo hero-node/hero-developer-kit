@@ -1,0 +1,10 @@
+<html><head></head><body><dom-module id="hero-location-view">
+     <style type="text/css">div{display:inline-block;position:absolute;overflow:hidden;}</style>
+  <template>
+    <div id="heroContent">
+
+    </div>
+  </template>
+</dom-module>
+<script>Polymer({is:"hero-location-view",behaviors:[HeroBehavior],on:function(o){o.fetch_coordinate&&(o.fetch_coordinate.la=122,o.fetch_coordinate.lo=122,API.out(o.fetch_coordinate))}});</script>
+</body></html>

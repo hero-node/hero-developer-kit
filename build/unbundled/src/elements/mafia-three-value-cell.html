@@ -1,0 +1,16 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="hero-behavior.html">
+
+</head><body><dom-module id="mafia-three-value-cell">
+    <style type="text/css">:host{display:inline-block;height:100%;width:100%;margin:0px;padding:0px;}div{display:inline-block;position:relative;width:100%;height:100%;margin:0px;padding:0px;overflow:hidden;}p{display:inline-block;position:absolute;overflow:hidden;margin:0px;padding:0px;width:100%;height:100%;}</style>
+  <template>
+    <div id="heroContent">
+      <p id="one"></p>
+      <p id="two"></p>
+      <p id="three"></p>
+    </div>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"mafia-three-value-cell",behaviors:[HeroBehavior],on:function(t){t.one&&(this.$.one.innerHTML=t.one,this.$.one.style.lineHeight=this.$.heroContent.style.height,this.$.one.style.width="33%",this.$.one.style.left="0px",this.$.heroContent.style.borderBottom="solid 1px #dedede"),t.two&&(this.$.two.innerHTML=t.two,this.$.two.style.lineHeight="44px",this.$.two.style.width="33%",this.$.two.style.left="33%",this.$.two.style.textAlign="center"),t.three&&(this.$.three.innerHTML=t.three,this.$.three.style.lineHeight="44px",this.$.three.style.width="33%",this.$.three.style.right="0px",this.$.three.style.textAlign="right")}});</script>
+</body></html>

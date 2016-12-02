@@ -1,0 +1,136 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <script>
+    var her = require('her')();
+    // window.location.href='/index.html'
+  </script>
+</head>
+<body>
+	<style type="text/css">
+	body{
+		margin: 0px;
+		padding: 0px;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background-color: #ccc;
+	}
+	#sideBar{
+		position: absolute;
+		margin: 0px;
+		padding: 0px;
+		width: 80px;
+		height: 100%;
+		border-right: 1px;
+		border-right-color: #aaa;
+		background-color: #fff;
+	}
+	.item{
+		width: 80px;
+		height: 160px;
+		text-align: center;
+
+	}
+	.item img{
+		margin-top: 44px;
+		padding: 0px;
+		padding-top: 10px;
+	}
+	.item p{
+		margin: 2px;
+		font-size: 12px;
+		color: #333;
+	}
+	.item .select{
+		width: 80px;
+		height: 160px;
+		background-color: #8d5afe;
+	}
+	.content{
+		position: absolute;
+		margin: 0px;
+		padding: 0px;
+		left: 80px;
+		right: 0px;
+		height: 100%;
+		background-color: 
+	}
+	.editWeb{
+		position: absolute;
+		margin: 0px;
+		padding: 0px;
+		left: 0px;
+		right: 320px;
+		height: 100%;
+	}
+	.resultWeb{
+		position: absolute;
+		margin: 0px;
+		padding: 0px;
+		right: 0px;
+		width: 320px;
+		height: 100%;
+	}
+	#debug{
+		background-color: red;
+	}
+	#edit{
+		background-color: green;
+	}
+	#proj{
+		background-color: gray;
+	}
+	</style>
+	<script type="text/javascript">
+	function edit(){
+		document.getElementById('edit').style.display = 'block';
+		document.getElementById('debug').style.display = 'none';
+		document.getElementById('proj').style.display = 'none';
+	}
+	function debug(){
+		document.getElementById('edit').style.display = 'none';
+		document.getElementById('debug').style.display = 'block';
+		document.getElementById('proj').style.display = 'none';
+	}
+	function proj(){
+		document.getElementById('edit').style.display = 'none';
+		document.getElementById('debug').style.display = 'none';
+		document.getElementById('proj').style.display = 'block';
+	}
+	</script>
+	<div id='sideBar'>
+		<div class='item' onclick="edit()">
+			<img src='images/editor.png'></img>
+			<p>编辑</p>
+		</div>
+		<div class='item' onclick="debug()">
+			<img src='images/editor.png'></img>
+			<p>调试</p>
+		</div>
+		<div class='item' onclick="proj()">
+			<img src='images/editor.png'></img>
+			<p>项目</p>
+		</div>
+		<div class='item'>
+			<img src='images/close.png'></img>
+			<p>关闭</p>
+		</div>
+	</div>
+	<div class='content' id='edit'>
+		<webview class='editWeb' src='http://www.baidu.com'></webview>
+		<webview class='resultWeb' useragent="Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1" src='http://www.baidu.com'></webview>
+	</div>
+	<div class='content' id='debug'>
+		<webview class='editWeb' src='http://www.google.com'></webview>
+		<webview class='resultWeb' src='http://www.google.com'></webview>
+
+	</div>
+	<div class='content' id='proj'>
+		<webview class='editWeb' src='http://www.bing.com'></webview>
+		<webview class='resultWeb' src='http://www.bing.com'></webview>
+	</div>
+
+</body>
+</html>

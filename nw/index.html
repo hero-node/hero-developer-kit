@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html manifest="cash.appcache">
+    <head>
+  <script type="text/javascript" src="js/hero.js"></script>
+  <script type="text/javascript">
+  API.boot = function(data){
+  }
+  API.special_logic = function(data){
+    if (data.file) {
+      API.out({datas:[{name:'toast',text:data.file}]});
+      API.out({datas:[{name:'editor',file:data.file}]});
+    };
+  };
+  API.reloadData = function(data){
+
+  };
+
+  var ui = {
+  version:0,
+  nav:{
+        navigationBarHidden:true
+  },
+  views:
+  [
+    {
+      class:'HeroView',
+      name:'silde',
+      frame:{w:'88',h:'1x'},
+      borderColor:'aaaaaa',
+    },
+    {
+      class:'HeroFilesTree',
+      frame:{x:'88',w:'240',h:'1x'},
+      borderColor:'aaaaaa',
+      backgroundColor:'ffffff',
+      dir:'/Users/liuguoping/hero-developer/src'
+    },
+    {
+      class:'HeroFileEditor',
+      name:'editor',
+      frame:{x:'328',r:'320',h:'1x'},
+      borderColor:'aaaaaa',
+      backgroundColor:'ffffff',
+    },
+    {
+      class:'HeroSimulator',
+      name:'simulator',
+      frame:{w:'320',r:'0',h:'1x'},
+      borderColor:'aaaaaa',
+      backgroundColor:'aa00bb',
+    },
+
+
+
+
+
+
+
+
+    {
+      class:'HeroToast',
+      name:'toast',
+    }
+  ]
+};
+</script>
+</head>
+</html>

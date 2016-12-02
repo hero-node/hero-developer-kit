@@ -1,0 +1,12 @@
+<html><head></head><body><dom-module id="hero-toast">
+    <style type="text/css"></style>
+  <template>
+    <div id="heroContent"></div>
+    <paper-toast id="toast" text="{{text}}">
+    <img src="">
+    </paper-toast>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"hero-toast",behaviors:[HeroBehavior],properties:{text:{type:String}},on:function(t){t.text&&t.text.length>0&&(this.text=t.text,this.$.toast.show())}});</script>
+</body></html>

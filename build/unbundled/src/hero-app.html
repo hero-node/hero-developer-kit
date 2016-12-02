@@ -1,0 +1,74 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-left-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-down-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-right-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-top-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-bottom-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-left-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-right-animation.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+
+<link rel="import" href="elements/hero-behavior.html">
+<link rel="import" href="hero-view-controller.html">
+<link rel="import" href="elements/hero-button.html">
+<link rel="import" href="elements/dr-button.html">
+<link rel="import" href="elements/hero-view.html">
+<link rel="import" href="elements/hero-web-view.html">
+<link rel="import" href="elements/hero-table-view.html">
+<link rel="import" href="elements/hero-table-view-cell.html">
+<link rel="import" href="elements/hero-table-view-section.html">
+<link rel="import" href="elements/dr-table-view.html">
+<link rel="import" href="elements/dr-table-view-cell.html">
+<link rel="import" href="elements/ui-view.html">
+<link rel="import" href="elements/hero-label.html">
+<link rel="import" href="elements/dr-text-field.html">
+<link rel="import" href="elements/hero-text-view.html">
+<link rel="import" href="elements/hero-text-field.html">
+<link rel="import" href="elements/hero-image-view.html">
+<link rel="import" href="elements/hero-loading.html">
+<link rel="import" href="elements/hero-toolbar-item.html">
+<link rel="import" href="elements/hero-check-box.html">
+<link rel="import" href="elements/hero-toast.html">
+<link rel="import" href="elements/hero-location-view.html">
+<link rel="import" href="elements/hero-device.html">
+<link rel="import" href="elements/hero-confirm.html">
+<link rel="import" href="elements/hero-alert.html">
+<link rel="import" href="elements/hero-switch.html">
+<link rel="import" href="elements/hero-picker-view.html">
+<link rel="import" href="elements/hero-scroll-view.html">
+<link rel="import" href="elements/mafia-loan-table.html">
+<link rel="import" href="elements/mafia-loan-table-cell.html">
+<link rel="import" href="elements/hero-scan-bar-code-view.html">
+<link rel="import" href="elements/hero-dialog.html">
+<link rel="import" href="elements/dr-a-b-test.html">
+<link rel="import" href="elements/mafia-ocr-view.html">
+
+</head><body><dom-module id="hero-app">
+  <template>
+    <style>:host{display:block;position:absolute;margin:0px;padding:0px;width:100%;height:100%;}#bar{display:block;position:absolute;overflow:hidden;top:0px;width:100%;height:44px;background-color:#303e53;border-bottom:1px solid #ddd;}#tab{display:block;position:absolute;overflow:hidden;bottom:0px;width:100%;height:44px;background-color:#fff;border-top:1px solid #ddd;}#cover{display:block;position:absolute;overflow:hidden;height:100%;width:100%;background-color:#333;background-size:cover;background-image:url('/images/default.png');}#title{display:inline-block;position:absolute;overflow:hidden;width:100%;height:100%;color:#fff;font-size:20px;text-align:center;margin:10px;pointer-events:none;}#leftBtn{display:none;position:absolute;overflow:hidden;color:#fff;width:70px;height:25px;left:10px;top:12px;}#backBtn{display:none;position:absolute;overflow:hidden;width:25px;height:25px;left:10px;top:12px;}#rightBtn{display:none;position:absolute;overflow:hidden;width:70px;height:25px;right:10px;top:12px;}neon-animated-pages{display:block;position:absolute;overflow:hidden;top:44px;bottom:100%;width:100%;}@keyframes backBtnIn{from{opacity:0;}to{opacity:1;}}@keyframes backBtnOut{from{opacity:1;}to{opacity:0;}}@keyframes coverGo{from{opacity:1;}to{opacity:0;}from{transform:scale(1,1);}to{transform:scale(1.1,1.1);}}</style>
+    <div id="bar">
+      <hero-button class="btn" id="backBtn"></hero-button>
+      <hero-button class="btn" id="leftBtn"></hero-button>
+      <hero-button class="btn" id="rightBtn"></hero-button>
+      <p id="title"></p>
+    </div>
+    <neon-animated-pages id="pages" role="main" attr-for-selected="name">
+    </neon-animated-pages>
+    <div id="tab"></div>
+    <div id="cover"></div>
+  </template>
+  <script>Polymer({is:"hero-app",behaviors:[HeroBehavior],properties:{loadedPages:{type:Array,value:[]},rootPages:{type:Array,value:[]},pageStack:{type:Array,value:[]},tabs:{type:Array}},on:function(t){if(t.tabs){this.tabs=t.tabs;for(var e=0;e<t.tabs.length;e++){var i=t.tabs[e];this.rootPages.push(this.page2Element(i.url));var a=document.createElement("hero-toolbar-item");this.$.tab.appendChild(a),a.controller=this,a.oon({frame:{x:e/t.tabs.length+"x",w:1/t.tabs.length+"x",y:"0",h:"44"},image:window.location.protocol+"//"+window.location.host+"/images/"+i.image+".png",title:i.title,selected:0==e,click:{select:e+1}})}if(1==this.tabs.length&&(this.$.tab.style.display="none",this.$.pages.style.bottom="0px"),this.gotoPage(t.tabs[0].url),t.loadPage){var n=this;setTimeout(function(){n.gotoPage(t.loadPage)},1500)}}if(t.select){for(var e=0;e<this.$.tab.children.length;e++){var a=this.$.tab.children[e];a.on({selected:e==t.select-1})}this.$.title.innerHTML=this.json.tabs[t.select-1].title,this.gotoPage(this.json.tabs[t.select-1].url)}t.goBack&&window.history.back(),t.command},str2Color:function(t){if(3==t.length||6==t.length)return"#"+t;if(8==t.length){var e=parseInt("0x"+t.substr(0,2)),i=parseInt("0x"+t.substr(2,2)),a=parseInt("0x"+t.substr(4,2)),n=parseInt("0x"+t.substr(6,2))/255;return"rgba("+e+","+i+","+a+","+n+")"}},camelCase2bar:function(t){for(var e=t.toLowerCase(),i=e.substr(0,2),a=2;a<t.length;a++)i=t.charAt(a)!==e.charAt(a)?i.concat("-"+e.charAt(a)):i.concat(e.charAt(a));return i},remove:function(t,e){if(t){var i=t.indexOf(e);i>=0&&t.splice(i,1)}},contain:function(t,e){for(var i=t.length;i--;)if(t[i]===e)return!0;return!1},registerElement:function(t){this.contain(this.loadedPages,t)||(this.loadedPages.push(t),Polymer({is:t,behaviors:[HeroViewController],ready:function(){}}))},page2Element:function(t){var e=t.replace("_","-");return"http"===t.substring(0,4)&&(e=e.split("/").pop(),e.search(/\?/)>0&&(e=e.split("?")[0]),e=e.replace(".html",""),e=e.search(/-/)>0?e:"hero-"+e),e},ready:function(){window.APP=this,window.addEventListener("popstate",function(t){window.APP.gotoPage(t.state.state,"back")}),this.$.backBtn.controller=this,this.$.backBtn.oon({image:window.location.protocol+"//"+window.location.host+"/images/back.png",click:{goBack:!0}}),this.$.rightBtn.oon({title:"right",titleColor:"ffffff"}),this.$.cover.style.animation="coverGo 2s";var t=this;setTimeout(function(){t.$.cover.style.display="none"},1800),window.__defineSetter__("API",function(t){window[window.location.href+"_API"]=t}),window.__defineGetter__("API",function(){return window[window.location.href+"_API"]}),window.__defineSetter__("ui2Data",function(t){window[window.location.href+"_ui2Data"]=t}),window.__defineGetter__("ui2Data",function(){return window[window.location.href+"_ui2Data"]})},setNav:function(t){t&&(t.nav&&(t=t.nav),this.$.title.innerHTML=t.title||"",document.title=t.title||"",this.$.bar.style.backgroundColor=this.str2Color(t.tintColor||"303e53"),t.navigationBarHidden?(this.$.bar.style.height="0px",this.$.pages.style.top="0px"):(this.$.bar.style.height="44px",this.$.pages.style.top="44px"),t.leftItems&&t.leftItems.length>0?(this.$.backBtn.style.display="none",this.$.backBtn.style.animation="backBtnOut 0.25s",this.$.leftBtn.style.display="inline-block",this.$.leftBtn.on(t.leftItems[0]),this.$.leftBtn.controller=this.$.pages.selectedItem):(this.$.leftBtn.style.display="none",this.contain(this.rootPages,this.pageStack[this.pageStack.length-1])?(this.$.backBtn.style.display="none",this.$.backBtn.style.animation="backBtnOut 0.25s"):(this.$.backBtn.style.display="inline-block",this.$.backBtn.style.animation="backBtnIn 0.25s")),t.rightItems&&t.rightItems.length>0?(this.$.rightBtn.on(t.rightItems[0]),this.$.rightBtn.controller=this.$.pages.selectedItem,this.$.rightBtn.style.display="inline-block"):this.$.rightBtn.style.display="none")},loadPage:function(t){var e=this.page2Element(t);if(this.contain(this.loadedPages,e))for(var i=0;i<this.$.pages.children.length;i++){var a=this.$.pages.children[i];a.name==e&&(a.controller.getInitData(),a.viewWillAppear(),this.$.pages.selected=e)}else{this.registerElement(e);var n=this;window.API=void 0,window.ui=void 0,this.importHref(this.resolveUrl(t),function(){var i=document.createElement(e);i.name=e,i.url=t,n.$.pages.__domApi.appendChild(i),n.$.pages.selected=e,n.async(function(){i.controller.getInitData(),i.controller.setDeviceType("PC"),i.viewWillAppear()},10)},function(i){var a=document.createElement(e);a.name=e,a.url=t,n.$.pages.appendChild(a),this.$.pages.selected=e},!0)}},gotoPage:function(t,e){var i=this.page2Element(t);if(this.contain(this.rootPages,i)&&this.rootPages.length>1?(this.$.tab.style.display="block",this.$.pages.style.bottom="44px",this.$.backBtn.style.display="none"):(this.$.tab.style.display="none",this.$.pages.style.bottom="0px"),this.contain(this.pageStack,i)?this.contain(this.rootPages,this.pageStack[this.pageStack.length-1])?(this.$.pages.entryAnimation="",this.$.pages.exitAnimation=""):(this.$.pages.exitAnimation="slide-from-bottom-animation"==this.$.pages.entryAnimation?"slide-down-animation":"slide-right-animation",this.$.pages.entryAnimation="fade-in-animation"):this.contain(this.rootPages,i)?(this.$.pages.entryAnimation="",this.$.pages.exitAnimation=""):(this.$.pages.entryAnimation="slide-from-right-animation",this.$.pages.exitAnimation="fade-out-animation"),"present"==e?(this.$.pages.entryAnimation="slide-from-bottom-animation",this.$.pages.exitAnimation="fade-out-animation"):"dissmiss"==e&&(this.$.pages.entryAnimation="slide-from-top-animation",this.$.pages.exitAnimation="fade-out-animation"),this.contain(this.pageStack,i))for(;this.pageStack[this.pageStack.length-1]!=i;)this.pageStack.pop();else this.pageStack.push(i);this.$.pages.selectedItem&&this.$.pages.selectedItem.viewWillDisappear(),"dissmiss"!=e&&"back"!=e&&"rootBack"!=e&&history.pushState({state:t},i,"?state="+t),this.loadPage(t)}});</script>
+
+</dom-module>
+</body></html>

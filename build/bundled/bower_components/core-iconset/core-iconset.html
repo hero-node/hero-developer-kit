@@ -1,0 +1,8 @@
+<html><head><link rel="import" href="../core-meta/core-meta.html">
+
+</head><body><polymer-element name="core-iconset" extends="core-meta" attributes="src width icons iconSize">
+  
+  <script>Polymer("core-iconset",{src:"",width:0,icons:"",iconSize:24,offsetX:0,offsetY:0,type:"iconset",created:function(){this.iconMap={},this.iconNames=[],this.themes={}},ready:function(){this.src&&this.ownerDocument!==document&&(this.src=this.resolvePath(this.src,this.ownerDocument.baseURI)),this["super"](),this.updateThemes()},iconsChanged:function(){var t=this.offsetX,e=this.offsetY;this.icons&&this.icons.split(/\s+/g).forEach(function(s,i){this.iconNames.push(s),this.iconMap[s]={offsetX:t,offsetY:e},t+this.iconSize<this.width?t+=this.iconSize:(t=this.offsetX,e+=this.iconSize)},this)},updateThemes:function(){var t=this.querySelectorAll("property[theme]");t&&t.array().forEach(function(t){this.themes[t.getAttribute("theme")]={offsetX:parseInt(t.getAttribute("offsetX"))||0,offsetY:parseInt(t.getAttribute("offsetY"))||0}},this)},getOffset:function(t,e){var s=this.iconMap[t];if(!s){var i=this.iconNames[Number(t)];s=this.iconMap[i]}var o=this.themes[e];return s&&o?{offsetX:s.offsetX+o.offsetX,offsetY:s.offsetY+o.offsetY}:s},applyIcon:function(t,e,s){var i=this.getOffset(e);if(s=s||1,t&&i){var e=t._icon||document.createElement("div"),o=e.style;return o.backgroundImage="url("+this.src+")",o.backgroundPosition=-i.offsetX*s+"px "+(-i.offsetY*s+"px"),o.backgroundSize=1===s?"auto":this.width*s+"px",e.parentNode!==t&&t.appendChild(e),e}}});</script>
+
+</polymer-element>
+</body></html>
